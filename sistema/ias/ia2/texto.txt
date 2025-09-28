@@ -1,0 +1,37 @@
+import nibabel as nib
+import numpy as np
+import argparse
+
+def sobrepor_segmentacao_vermelha(caminho_imagem_original, caminho_imagem_segmentada):
+
+    imagem_original = nib.load(caminho_imagem_original)
+    imagem_segmentada = nib.load(caminho_imagem_segmentada)
+
+    dados_imagem_original = imagem_original.get_fdata()
+    dados_imagem_segmentada = imagem_segmentada.get_fdata()
+    normaliza_imagem_original = (dados_imagem_original - np.min(dados_imagem_original)) / (np.max(dados_imagem_original) - np.min(dados_imagem_original) + 1e-8)
+
+    dados_rgb = np.stack([normaliza_imagem_original, normaliza_imagem_original, normaliza_imagem_original], axis = -1)
+
+    mascara_segmentada = dados_imagem_segmentada > 0
+
+    dados_rgb[mascara_segmentada, 0] = 1.0
+    dados_rgb[mascara_segmentada, 1] = 0.0
+    dados_rgb[mascara_segmentada, 2] = 0.0
+
+    dados_rgb[mascara_segmentada] = 0.5 * dados_rgb[mascara_segmentada] + \
+                                0.5 * np.stack([normaliza_imagem_original[mascara_segmentada]]*3, axis=-1)
+
+
+    sobreposicao_imagem = nib.Nifti1Image(dados_rgb, affine = imagem_original.affine)
+
+    nib.save(sobreposicao_imagem, caminho_imagem_segmentada)
+    print("Sucesso!")
+    
+if __name__ == "__main__": 
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--caminho_imagem_original", required = True)
+    ap.add_argument("--caminho_imagem_segmentada", required = True)
+    argumentos = ap.parse_args()
+    sobrepor_segmentacao_vermelha(argumentos.caminho_imagem_original, argumentos.caminho_imagem_segmentada)
+

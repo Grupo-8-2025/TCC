@@ -1,0 +1,94 @@
+.container {
+    background-color: #fbf8f4;
+}
+
+/* --- Cards --- */
+.card-header-custom, .modal-header-custom{
+    background-color: #11314d;
+    color: #fbf8f4;
+}
+.card-exame {
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.card-exame:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.card-custom{
+    background-color: #309ea1;
+    color: #f8f9fa;
+}
+
+/* --- Botões --- */
+.btn-custom-azul{
+    background-color: #11314d;
+    color: #fbf8f4;
+}
+.btn-custom-cinza{
+    background-color: #6c757d;
+    color: #fbf8f4;
+}
+.btn-custom-verde{
+    background-color: #309ea1;
+    color: #fbf8f4;
+}
+.btn-custom-azul:hover{
+    background-color: #1f447a;
+    color: #fbf8f4;
+}
+.btn-custom-cinza:hover{
+    background-color: #5c636a;
+    color: #fbf8f4;
+}
+.btn-custom-verde:hover{
+    background-color: #48cdd1;
+    color: #fbf8f4;
+}
+.btn-custom-sair:hover{
+    background-color: #11314d;
+    color: #fbf8f4;
+}
+.navbar-custom {
+    background-color: #f8f9fa;
+}
+.nav-link {
+    color: #11314d; 
+    font-size: 1.1rem;
+}
+.sidebar-custom{
+    background-color: #11314d;
+    color: #f8f9fa;
+    border-radius: 0px 1rem 1rem 0px;
+}
+
+#viewerContainer {
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(135deg, #1f447a, #309ea1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #1f447a;
+    border-radius: 10px;
+    box-shadow: inset 0 0 20px rgba(0, 37, 80, 0.5);
+    color: #48cdd1;
+    padding-top: 5px;
+}
+
+#viewerContainer .papaya-menu-label {
+    display: inline-block;
+    background: #fff;
+    color: #11314d !important;
+    padding: 1px 4px;
+    margin: 4px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#viewerContainer .papaya-menu-label:hover {
+    background: #e9e7e4;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
